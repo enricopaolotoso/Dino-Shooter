@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        PictureBox ammoPic = new PictureBox(); // create a new instance of the picture box
 
         bool goLeft, goRight, goUp, goDown, gameOver;
         string facing = "up";
@@ -79,6 +80,10 @@ namespace WindowsFormsApp1
                 player.Top += speed;
             }
 
+            if (player.Bounds.IntersectsWith(ammoPic.Bounds))
+            {
+                ammo = 10;
+            }
 
 
 
@@ -145,20 +150,54 @@ namespace WindowsFormsApp1
                 goDown = false;
             }
 
-            if (e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Space && ammo > 0)
             {
+                ammo--;
                 ShootBullet(facing);
+            }
+
+            if (ammo < 1)
+            {
+                DropAmmo() ;                
             }
 
         }
 
         private void ShootBullet(string direction)
-        {
+          {
+            Bullet shootBullet = new Bullet();
+            shootBullet.direction = direction;
+            shootBullet.bulletLeft = player.Left + (player.Width / 2);
+            shootBullet.bulletTop = player.Top + (player.Height / 2);
+            shootBullet.makeBullet(this);
 
         }
 
         private void MakeDinos()
         {
+            PictureBox dino = new PictureBox();
+            dino.Tag = "dino";
+            dino.Image = Properties.Resources.dino_1_down;
+            dino.Left = newRand.Next(0, 900);
+            dino.Top = newRand.Next(0, 800);
+            dino.SizeMode = PictureBoxSizeMode.AutoSize;
+            dinoList.Add(dino);
+            this.Controls.Add(dino);
+            player.BringToFront();
+        }
+
+        private void DropAmmo()
+        {
+
+            ammoPic.Image = Properties.Resources.ammo_Image; // assignment the ammo image to the picture box
+            ammoPic.SizeMode = PictureBoxSizeMode.AutoSize; // set the size to auto size
+            ammoPic.Left = newRand.Next(10, this.ClientSize.Width - ammoPic.Width); // set the location to a random left
+            ammoPic.Top = newRand.Next(50, this.ClientSize.Height - ammoPic.Height); // set the location to a random top
+            ammoPic.Tag = "ammo"; // set the tag to ammo
+            this.Controls.Add(ammoPic); // add the ammo picture box to the screen
+
+            ammoPic.BringToFront(); // bring it to front
+            player.BringToFront(); // bring the player to front
 
         }
 

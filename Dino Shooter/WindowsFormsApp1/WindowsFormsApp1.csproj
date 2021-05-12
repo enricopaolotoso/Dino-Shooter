@@ -101,5 +101,44 @@
   <ItemGroup>
     <None Include="graphics\shooter assault down.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 1 down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 1 right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 1 up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 2 down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 2 right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 2 up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 3 down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 3 right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 3 up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dino 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ammo-Image.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

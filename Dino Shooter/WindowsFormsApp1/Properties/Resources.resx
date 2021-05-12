@@ -118,6 +118,45 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ammo_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ammo-Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_1_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 1 down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_1_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 1 right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_1_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 1 up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_2_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 2 down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_2_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 2 right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_2_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 2 up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_3_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 3 down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_3_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 3 right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dino_3_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dino 3 up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="shooter_assalut_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\graphics\shooter assalut right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

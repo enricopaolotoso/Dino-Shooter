@@ -20,12 +20,7 @@ namespace WindowsFormsApp1
 
         public void makeBullet(Form form)
         {
-            bullet.BackColor = Color.White;
-            bullet.Size = new Size(5, 5);
-            bullet.Tag = "bullet";
-            bullet.Left = bulletLeft;
-            bullet.Top = bulletTop;
-            bullet.BringToFront();
+           
 
             form.Controls.Add(bullet);
 
@@ -38,7 +33,15 @@ namespace WindowsFormsApp1
 
         private void BulletTimerEvent(object sender, EventArgs e)
         {
-            if(direction == "left")
+            bullet.BackColor = Color.White;
+            bullet.Size = new Size(5, 5);
+            bullet.Tag = "bullet";
+            bullet.Left = bulletLeft;
+            bullet.Top = bulletTop;
+            bullet.BringToFront();
+
+
+            if (direction == "left")
             {
                 bulletLeft -= speed;
             }
@@ -56,6 +59,16 @@ namespace WindowsFormsApp1
             if(direction == "down")
             {
                 bulletTop += speed;
+            }
+
+            if(bullet.Left <10 || bullet.Left > 860 || bullet.Top <10 || bullet.Top > 600)
+            {
+                bulletTimer.Stop();
+                bulletTimer.Dispose();
+                bullet.Dispose();
+                bulletTimer = null;
+                bullet = null;
+            
             }
         }
 

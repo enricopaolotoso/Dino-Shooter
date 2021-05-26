@@ -12,8 +12,8 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        PictureBox ammoPic = new PictureBox(); // create a new instance of the picture box
-
+        Random dinoRand = new Random();
+        PictureBox ammoPic = new PictureBox();
         bool goLeft, goRight, goUp, goDown, gameOver;
         string facing = "up";
         int playerHealth = 100;
@@ -32,6 +32,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            RestartGame();
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -58,6 +59,8 @@ namespace WindowsFormsApp1
             else
             {
                 gameOver = true;
+                player.Image = Properties.Resources.dead;
+                GameTimer.Stop();
             }
 
             txtAmmo.Text = "Ammo" + ammo;
@@ -79,13 +82,43 @@ namespace WindowsFormsApp1
             {
                 player.Top += speed;
             }
-
-            if (player.Bounds.IntersectsWith(ammoPic.Bounds))
+           
+            foreach(Control x in this.Controls)
             {
-                ammo = 10;
+                if (x is PictureBox && (string)x.Tag =="ammo")
+                {
+                    if(player.Bounds.IntersectsWith(x.Bounds))
+                    {
+                        this.Controls.Remove(x);
+                        ((PictureBox)x).Dispose();
+                        ammo += 5;
+                    }
+                }
+
+
+                if (x is PictureBox && (string)x.Tag == "dino")
+                {
+                    if(x.Left > player.Left)
+                    {
+                        x.Left -= dinoSpeed;
+                        ((PictureBox)x).Image = Properties.Resources.dino_1;
+                    }
+                }
+
+                if (x is PictureBox && (string)x.Tag == "dino")
+                {
+                    if (x.Left < player.Left)
+                    {
+                        x.Left += dinoSpeed;
+                        ((PictureBox)x).Image = Properties.Resources.dino_1_down;
+                    }
+                }
+
+
+
+
+
             }
-
-
 
         }
 
@@ -154,12 +187,20 @@ namespace WindowsFormsApp1
             {
                 ammo--;
                 ShootBullet(facing);
+
+                if (ammo < 1)
+                {
+                    DropAmmo();
+                }
+
             }
 
-            if (ammo < 1)
-            {
-                DropAmmo() ;                
-            }
+
+
+        }
+
+        private void txtAmmo_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -175,9 +216,24 @@ namespace WindowsFormsApp1
 
         private void MakeDinos()
         {
+
             PictureBox dino = new PictureBox();
+            dino.BackColor = Color.Transparent;
+            int dinoNum = dinoRand.Next(1,4);
+            if (dinoNum == 1)
+            {
+                dino.Image = Properties.Resources.dino_1_down;
+            }
+            else if (dinoNum == 2)
+            {
+                dino.Image = Properties.Resources.dino_2_down;
+            }
+            else if (dinoNum == 3)
+            {
+                dino.Image = Properties.Resources.dino_3_down;
+            }
             dino.Tag = "dino";
-            dino.Image = Properties.Resources.dino_1_down;
+
             dino.Left = newRand.Next(0, 900);
             dino.Top = newRand.Next(0, 800);
             dino.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -188,7 +244,7 @@ namespace WindowsFormsApp1
 
         private void DropAmmo()
         {
-
+            
             ammoPic.Image = Properties.Resources.ammo_Image; // assignment the ammo image to the picture box
             ammoPic.SizeMode = PictureBoxSizeMode.AutoSize; // set the size to auto size
             ammoPic.Left = newRand.Next(10, this.ClientSize.Width - ammoPic.Width); // set the location to a random left
@@ -203,7 +259,30 @@ namespace WindowsFormsApp1
 
         private void RestartGame()
         {
+            player.Image = Properties.Resources.shooter_assault_up;
 
+            foreach (PictureBox i in dinoList)
+            {
+                this.Controls.Remove(i);
+            }
+
+            dinoList.Clear();
+
+            for (int i = 0; i < 3; i++)
+            {
+                MakeDinos();
+            }
+
+            goUp = false;
+            goDown = false;
+            goLeft = false;
+            goRight = false;
+
+            playerHealth = 100;
+            score = 0;
+            ammo = 10;
+
+            GameTimer.Start();
         }
     }
 }

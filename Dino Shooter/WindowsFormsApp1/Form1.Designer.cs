@@ -50,6 +50,7 @@
             this.txtAmmo.Size = new System.Drawing.Size(96, 29);
             this.txtAmmo.TabIndex = 0;
             this.txtAmmo.Text = "Ammo. 0";
+            this.txtAmmo.Click += new System.EventHandler(this.txtAmmo_Click);
             // 
             // txtScore
             // 

@@ -45,9 +45,10 @@
             this.txtAmmo.BackColor = System.Drawing.Color.Transparent;
             this.txtAmmo.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmmo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtAmmo.Location = new System.Drawing.Point(13, 13);
+            this.txtAmmo.Location = new System.Drawing.Point(20, 20);
+            this.txtAmmo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtAmmo.Name = "txtAmmo";
-            this.txtAmmo.Size = new System.Drawing.Size(96, 29);
+            this.txtAmmo.Size = new System.Drawing.Size(143, 44);
             this.txtAmmo.TabIndex = 0;
             this.txtAmmo.Text = "Ammo. 0";
             this.txtAmmo.Click += new System.EventHandler(this.txtAmmo_Click);
@@ -58,18 +59,20 @@
             this.txtScore.BackColor = System.Drawing.Color.Transparent;
             this.txtScore.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtScore.Location = new System.Drawing.Point(349, 13);
+            this.txtScore.Location = new System.Drawing.Point(524, 20);
+            this.txtScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(77, 29);
+            this.txtScore.Size = new System.Drawing.Size(118, 44);
             this.txtScore.TabIndex = 1;
             this.txtScore.Text = "Kills: 0";
             this.txtScore.Click += new System.EventHandler(this.label2_Click);
             // 
             // HealthBar
             // 
-            this.HealthBar.Location = new System.Drawing.Point(692, 19);
+            this.HealthBar.Location = new System.Drawing.Point(1038, 29);
+            this.HealthBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.HealthBar.Name = "HealthBar";
-            this.HealthBar.Size = new System.Drawing.Size(137, 23);
+            this.HealthBar.Size = new System.Drawing.Size(206, 35);
             this.HealthBar.TabIndex = 2;
             this.HealthBar.Value = 100;
             this.HealthBar.Click += new System.EventHandler(this.progressBar1_Click);
@@ -80,9 +83,10 @@
             this.txtHealth.BackColor = System.Drawing.Color.Transparent;
             this.txtHealth.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHealth.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtHealth.Location = new System.Drawing.Point(615, 13);
+            this.txtHealth.Location = new System.Drawing.Point(922, 20);
+            this.txtHealth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtHealth.Name = "txtHealth";
-            this.txtHealth.Size = new System.Drawing.Size(81, 29);
+            this.txtHealth.Size = new System.Drawing.Size(123, 44);
             this.txtHealth.TabIndex = 3;
             this.txtHealth.Text = "Health:";
             // 
@@ -91,9 +95,10 @@
             this.player.BackColor = System.Drawing.Color.Transparent;
             this.player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.player.Image = ((System.Drawing.Image)(resources.GetObject("player.Image")));
-            this.player.Location = new System.Drawing.Point(372, 416);
+            this.player.Location = new System.Drawing.Point(558, 640);
+            this.player.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(100, 101);
+            this.player.Size = new System.Drawing.Size(150, 155);
             this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.player.TabIndex = 4;
             this.player.TabStop = false;
@@ -106,17 +111,18 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(851, 529);
+            this.ClientSize = new System.Drawing.Size(1276, 814);
             this.Controls.Add(this.player);
             this.Controls.Add(this.txtHealth);
             this.Controls.Add(this.HealthBar);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.txtAmmo);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);

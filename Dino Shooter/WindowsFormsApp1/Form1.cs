@@ -85,45 +85,77 @@ namespace WindowsFormsApp1
            
             foreach(Control x in this.Controls)
             {
-                if (x is PictureBox && (string)x.Tag =="ammo")
+                if (x is PictureBox && (string)x.Tag == "ammo")
                 {
-                    if(player.Bounds.IntersectsWith(x.Bounds))
+                    if (player.Bounds.IntersectsWith(x.Bounds))
                     {
                         this.Controls.Remove(x);
                         ((PictureBox)x).Dispose();
-                        ammo += 5;
+                        ammo += 100;
                     }
                 }
 
 
+
                 if (x is PictureBox && (string)x.Tag == "dino")
                 {
-                    if(x.Left > player.Left)
+                    if(player.Bounds.IntersectsWith(x.Bounds))
+                    {
+                        playerHealth -= 1;
+                    }
+
+                    if (x.Left > player.Left)
                     {
                         x.Left -= dinoSpeed;
                         ((PictureBox)x).Image = Properties.Resources.dino_1;
                     }
-                }
-
-                if (x is PictureBox && (string)x.Tag == "dino")
-                {
                     if (x.Left < player.Left)
                     {
                         x.Left += dinoSpeed;
+                        ((PictureBox)x).Image = Properties.Resources.dino_1_right;
+                    }
+                    if (x.Top > player.Top)
+                    {
+                        x.Top -= dinoSpeed;
                         ((PictureBox)x).Image = Properties.Resources.dino_1_down;
+                    }
+                    if (x.Top < player.Top)
+                    {
+                        x.Top += dinoSpeed;
+                        ((PictureBox)x).Image = Properties.Resources.dino_1_up;
+                    }
+
+
+                }
+
+                foreach (Control j in this.Controls)
+                {
+                    if (j is PictureBox && (string)j.Tag == "bullet" && x is PictureBox && (string)x.Tag == "dino")
+                    {
+                        if (x.Bounds.IntersectsWith(j.Bounds))
+                        {
+                            score++;
+
+                            this.Controls.Remove(j);
+                            ((PictureBox)j).Dispose();
+                            this.Controls.Remove(x);
+                            dinoList.Remove(((PictureBox)x));
+                            MakeDinos();
+                        }
                     }
                 }
 
-
-
-
-
             }
-
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
+
+            if( gameOver == true)
+            {
+                return;
+            }
+
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
@@ -151,10 +183,8 @@ namespace WindowsFormsApp1
                 facing = "down";
                 player.Image = Properties.Resources.shooter_assault_down;
             }
-
-
-
         }
+
 
         private void MainTimerEvents(object sender, EventArgs e)
         {
@@ -183,7 +213,7 @@ namespace WindowsFormsApp1
                 goDown = false;
             }
 
-            if (e.KeyCode == Keys.Space && ammo > 0)
+            if (e.KeyCode == Keys.Space && ammo > 0 && gameOver == false)
             {
                 ammo--;
                 ShootBullet(facing);
@@ -192,12 +222,14 @@ namespace WindowsFormsApp1
                 {
                     DropAmmo();
                 }
-
             }
 
-
-
+            if(e.KeyCode == Keys.Enter && gameOver == true)
+            {
+                RestartGame();
+            }
         }
+
 
         private void txtAmmo_Click(object sender, EventArgs e)
         {
@@ -277,6 +309,7 @@ namespace WindowsFormsApp1
             goDown = false;
             goLeft = false;
             goRight = false;
+            gameOver = false;
 
             playerHealth = 100;
             score = 0;

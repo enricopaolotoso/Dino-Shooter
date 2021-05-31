@@ -37,6 +37,7 @@
             this.player = new System.Windows.Forms.PictureBox();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.playtxt = new System.Windows.Forms.Label();
+            this.mostraForm2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,6 +120,16 @@
             this.playtxt.Text = "play";
             this.playtxt.Click += new System.EventHandler(this.playtxt_Click);
             // 
+            // mostraForm2
+            // 
+            this.mostraForm2.AutoSize = true;
+            this.mostraForm2.Location = new System.Drawing.Point(402, 304);
+            this.mostraForm2.Name = "mostraForm2";
+            this.mostraForm2.Size = new System.Drawing.Size(35, 13);
+            this.mostraForm2.TabIndex = 7;
+            this.mostraForm2.Text = "label1";
+            this.mostraForm2.Click += new System.EventHandler(this.mostraForm2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,6 +138,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(843, 487);
+            this.Controls.Add(this.mostraForm2);
             this.Controls.Add(this.playtxt);
             this.Controls.Add(this.player);
             this.Controls.Add(this.txtHealth);
@@ -153,6 +165,7 @@
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.Label playtxt;
+        private System.Windows.Forms.Label mostraForm2;
     }
 }
 

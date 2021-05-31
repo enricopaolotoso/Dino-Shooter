@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        Form2 form2 = new Form2();
         bool goLeft, goRight, goUp, goDown, gameOver;
         string facing = "up";
         int playerHealth = 100;
@@ -231,6 +232,12 @@ namespace WindowsFormsApp1
         {
             RestartGame();
             playtxt.Visible = false;
+        }
+
+        private void mostraForm2_Click(object sender, EventArgs e)
+        {
+            form2.Show();
+            this.Hide();
         }
 
         private void ShootBullet(string direction)

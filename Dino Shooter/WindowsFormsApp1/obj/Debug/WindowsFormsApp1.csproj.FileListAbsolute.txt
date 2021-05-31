@@ -48,3 +48,4 @@ C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\Windo
 C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources

@@ -55,6 +55,13 @@ namespace WindowsFormsApp1
                 player.Image = Properties.Resources.dead;
                 GameTimer.Stop();
                 playtxt.Visible = true;
+                if (Form2.statoAccesso == true)
+                {
+                    if (score > Form2.punteggio)
+                    {
+                        //////////////////////////////////////////////////////////////////
+                    }
+                }
             }
 
             txtAmmo.Text = "Ammo" + ammo;
@@ -209,11 +216,6 @@ namespace WindowsFormsApp1
                    DropAmmo();
                 }
             }
-
-            //if(e.KeyCode == Keys.Enter && gameOver == true)
-            //{
-            //    RestartGame();
-            //}
         }
 
 

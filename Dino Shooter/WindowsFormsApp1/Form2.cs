@@ -16,13 +16,13 @@ namespace WindowsFormsApp1
         string riempimentoFile = "0::";
         public static char carattereDivisore = ':';
         int nRighe=0;
-        static int punteggio = 0;
+        public static int punteggio = 0;
         static int nRigaPlayer;
         public static string[,] username_punteggi;
         bool letturaFileEseguita;
         string stringSalvataggio = "";
         string username = "";
-        static bool statoAccesso=false;
+        public static bool statoAccesso=false;
         bool variabileStatoUsernamebtn = false;
         
         public Form2()
@@ -73,12 +73,13 @@ namespace WindowsFormsApp1
             {
                 for (int i = 0; i < nRighe; i++)
                 {
-                    if (username == username_punteggi[i, 0])
+                    if (username == username_punteggi[i, 0]||username=="\n"+username_punteggi[i,0])
                     {
                         controllo = true;
                         MessageBox.Show("benvenuto " + username);
                         nRigaPlayer = i;
                         statoAccesso = true;
+                        punteggio =Convert.ToInt32(username_punteggi[i, 1]);
                     }
                 }
                 if (controllo == false)
@@ -125,6 +126,7 @@ namespace WindowsFormsApp1
                     stringSalvataggio = "";//svuota la stringa salvataggioID
                     nRigaPlayer = 0;//rigagiocatore assume il valore 0 poichè l'ID dell'utente appena rigistrato si trova nalla prima riga dell'array
                     statoAccesso = true;//l'utente è loggato
+                    punteggio = 0;
                     gestioneFile();
                 }
             }
@@ -152,6 +154,18 @@ namespace WindowsFormsApp1
         private void Form2_Load(object sender, EventArgs e)
         {
             gestioneFile();
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            if (statoAccesso==true)
+            {
+                nRigaPlayer = nRighe + 1;
+                punteggio = 0;
+                username = "";
+                usernametxt.Clear();
+                statoAccesso = false;
+            }
         }
     }
 }

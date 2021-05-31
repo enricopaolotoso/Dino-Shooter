@@ -108,6 +108,7 @@ namespace WindowsFormsApp1
             this.logoutbtn.TabIndex = 5;
             this.logoutbtn.Text = "logout";
             this.logoutbtn.UseVisualStyleBackColor = false;
+            this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
             // 
             // Form2
             // 

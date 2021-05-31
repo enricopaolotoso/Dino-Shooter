@@ -38,3 +38,13 @@ C:\Users\Marco\Documents\GitHub\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\D
 C:\Users\Marco\Documents\GitHub\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Marco\Documents\GitHub\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Marco\Documents\GitHub\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Asus\Desktop\Dino-Shooter\Dino Shooter\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

@@ -12,8 +12,6 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        Random dinoRand = new Random();
-        PictureBox ammoPic = new PictureBox();
         bool goLeft, goRight, goUp, goDown, gameOver;
         string facing = "up";
         int playerHealth = 100;
@@ -24,15 +22,9 @@ namespace WindowsFormsApp1
         int score;
         List<PictureBox> dinoList = new List<PictureBox>();
 
-
-
-
-
-
         public Form1()
         {
             InitializeComponent();
-            RestartGame();
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -61,6 +53,7 @@ namespace WindowsFormsApp1
                 gameOver = true;
                 player.Image = Properties.Resources.dead;
                 GameTimer.Stop();
+                playtxt.Visible = true;
             }
 
             txtAmmo.Text = "Ammo" + ammo;
@@ -91,11 +84,9 @@ namespace WindowsFormsApp1
                     {
                         this.Controls.Remove(x);
                         ((PictureBox)x).Dispose();
-                        ammo += 100;
+                        ammo += 10;
                     }
                 }
-
-
 
                 if (x is PictureBox && (string)x.Tag == "dino")
                 {
@@ -185,12 +176,6 @@ namespace WindowsFormsApp1
             }
         }
 
-
-        private void MainTimerEvents(object sender, EventArgs e)
-        {
-
-        }
-
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
@@ -220,20 +205,32 @@ namespace WindowsFormsApp1
 
                 if (ammo < 1)
                 {
-                    DropAmmo();
+                   DropAmmo();
                 }
             }
 
-            if(e.KeyCode == Keys.Enter && gameOver == true)
-            {
-                RestartGame();
-            }
+            //if(e.KeyCode == Keys.Enter && gameOver == true)
+            //{
+            //    RestartGame();
+            //}
         }
 
 
         private void txtAmmo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            GameTimer.Stop();
+            playtxt.Visible = true;
+        }
+
+        private void playtxt_Click(object sender, EventArgs e)
+        {
+            RestartGame();
+            playtxt.Visible = false;
         }
 
         private void ShootBullet(string direction)
@@ -251,19 +248,7 @@ namespace WindowsFormsApp1
 
             PictureBox dino = new PictureBox();
             dino.BackColor = Color.Transparent;
-            int dinoNum = dinoRand.Next(1,4);
-            if (dinoNum == 1)
-            {
-                dino.Image = Properties.Resources.dino_1_down;
-            }
-            else if (dinoNum == 2)
-            {
-                dino.Image = Properties.Resources.dino_2_down;
-            }
-            else if (dinoNum == 3)
-            {
-                dino.Image = Properties.Resources.dino_3_down;
-            }
+            dino.Image = Properties.Resources.dino_1_down;
             dino.Tag = "dino";
 
             dino.Left = newRand.Next(0, 900);
@@ -276,7 +261,7 @@ namespace WindowsFormsApp1
 
         private void DropAmmo()
         {
-            
+            PictureBox ammoPic = new PictureBox();
             ammoPic.Image = Properties.Resources.ammo_Image; // assignment the ammo image to the picture box
             ammoPic.SizeMode = PictureBoxSizeMode.AutoSize; // set the size to auto size
             ammoPic.Left = newRand.Next(10, this.ClientSize.Width - ammoPic.Width); // set the location to a random left

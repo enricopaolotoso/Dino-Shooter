@@ -15,9 +15,9 @@ namespace WindowsFormsApp1
     {
         string riempimentoFile = "0::";
         public static char carattereDivisore = ':';
-        int nRighe=0;
+        public static int nRighe=0;
         public static int punteggio = 0;
-        static int nRigaPlayer;
+        public static int nRigaPlayer;
         public static string[,] username_punteggi;
         bool letturaFileEseguita;
         string stringSalvataggio = "";
@@ -80,6 +80,7 @@ namespace WindowsFormsApp1
                         nRigaPlayer = i;
                         statoAccesso = true;
                         punteggio =Convert.ToInt32(username_punteggi[i, 1]);
+                        punteggioGiocatorelbl.Text= "punteggio giocatore: " + username_punteggi[i, 1];
                     }
                 }
                 if (controllo == false)
@@ -128,6 +129,7 @@ namespace WindowsFormsApp1
                     statoAccesso = true;//l'utente è loggato
                     punteggio = 0;
                     gestioneFile();
+                    punteggioGiocatorelbl.Text = "punteggio giocatore: " + username_punteggi[nRigaPlayer, 1];
                 }
             }
         }
@@ -166,6 +168,13 @@ namespace WindowsFormsApp1
                 usernametxt.Clear();
                 statoAccesso = false;
             }
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+            Form1.form1.Show();
         }
     }
 }

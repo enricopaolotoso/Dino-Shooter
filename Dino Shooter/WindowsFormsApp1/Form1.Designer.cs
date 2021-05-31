@@ -123,11 +123,16 @@
             // mostraForm2
             // 
             this.mostraForm2.AutoSize = true;
-            this.mostraForm2.Location = new System.Drawing.Point(402, 304);
+            this.mostraForm2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.mostraForm2.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mostraForm2.ForeColor = System.Drawing.Color.White;
+            this.mostraForm2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.mostraForm2.Location = new System.Drawing.Point(330, 290);
             this.mostraForm2.Name = "mostraForm2";
-            this.mostraForm2.Size = new System.Drawing.Size(35, 13);
+            this.mostraForm2.Size = new System.Drawing.Size(210, 54);
             this.mostraForm2.TabIndex = 7;
-            this.mostraForm2.Text = "label1";
+            this.mostraForm2.Text = "schermata\r\naccesso/registrazione";
+            this.mostraForm2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.mostraForm2.Click += new System.EventHandler(this.mostraForm2_Click);
             // 
             // Form1

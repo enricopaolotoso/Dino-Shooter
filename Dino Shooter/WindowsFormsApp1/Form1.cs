@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        public static Form1 form1 = new Form1();
         Form2 form2 = new Form2();
         bool goLeft, goRight, goUp, goDown, gameOver;
         string facing = "up";
@@ -59,7 +61,9 @@ namespace WindowsFormsApp1
                 {
                     if (score > Form2.punteggio)
                     {
-                        //////////////////////////////////////////////////////////////////
+                        Form2.username_punteggi[Form2.nRigaPlayer, 1]=Convert.ToString(score);
+                        sort();
+                        save();
                     }
                 }
             }
@@ -217,8 +221,6 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
-
         private void txtAmmo_Click(object sender, EventArgs e)
         {
 
@@ -254,7 +256,6 @@ namespace WindowsFormsApp1
 
         private void MakeDinos()
         {
-
             PictureBox dino = new PictureBox();
             dino.BackColor = Color.Transparent;
             dino.Image = Properties.Resources.dino_1_down;
@@ -310,6 +311,72 @@ namespace WindowsFormsApp1
             ammo = 10;
 
             GameTimer.Start();
+        }
+        private void sort()
+        {
+            for (int i = 0; i < Form2.nRighe - 1; i++)
+            {
+                // Trova il minimo nel subarray da ordinare
+                int indice_min = i;
+                int primoElementoComparazione;
+                int secondoElementoComparazione;
+                for (int j = i + 1; j < Form2.nRighe; j++)
+                {
+                    primoElementoComparazione = Convert.ToInt32(Form2.username_punteggi[j, 1]);
+                    secondoElementoComparazione = Convert.ToInt32(Form2.username_punteggi[indice_min, 1]);
+                    // Confronto per trovare un nuovo minimo
+                    if (primoElementoComparazione < secondoElementoComparazione)
+                    {
+                        indice_min = j; // Salvo l'indice del nuovo minimo
+                    }
+                }
+                // Scambia il minimo trovato con il primo elemento
+                swap(indice_min, i);
+            }
+        }
+        private void swap(int a, int b)
+        {
+            string tempPunteggio = Form2.username_punteggi[a, 1];
+            Form2.username_punteggi[a, 1] = Form2.username_punteggi[b, 1];
+            Form2.username_punteggi[b, 1] = tempPunteggio;
+            string tempUsername = Form2.username_punteggi[a, 0];
+            Form2.username_punteggi[a, 0] = Form2.username_punteggi[b, 0];
+            Form2.username_punteggi[b, 0] = tempUsername;
+        }
+        private void save()
+        {
+            string save = "";//viene dichiarata la stringa per il salvataggio su file
+            string[,] arrayDiSalvataggio = new string[Form2.nRighe, 2];//viene dichiarato l'array di tipo string per la memorizzazione ordinata di ID e punteggi con i caratteri divisori
+            for (int i = 0; i < Form2.nRighe; i++)                     //tramite i seguenti cicli for 
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    if (i == (Form2.nRighe - 1) && j == 2)//se si tratta dell'ultimo elemento del file non viene aggiunto il carattere divisore
+                    {
+                        arrayDiSalvataggio[i, j] = Form2.username_punteggi[i, j];
+                    }
+                    else//in caso contrario si
+                    {
+                        arrayDiSalvataggio[i, j] = Form2.username_punteggi[i, j] + Form2.carattereDivisore;
+                    }
+                }
+            }
+            int variabileDiControllo = 0;
+            for (int i = 0; i < Form2.nRighe; i++)//ciclo for per il salvataggio nella stringa di salvataggio
+            {
+                if (variabileDiControllo == 0)//il primo valore che deve essere salvato su file è il numero delle righe delfile 
+                {
+                    save = Convert.ToString(Form2.nRighe) + Form2.carattereDivisore;
+                    variabileDiControllo = 1;
+                }
+                for (int j = 0; j < 2; j++)//vengono salvati gli ID e punteggi corrispondenti
+                {
+                    save = save + arrayDiSalvataggio[i, j];
+                }
+                //salvataggio = salvataggio + "\n";//dopo il salvataggio di un ID e punteggio il programma va a capo per salvare il successivo
+            }
+            File.WriteAllText(@"C:\Users\Asus\Desktop\IDePunteggi", save);//viene salvato il tutto su file
+            save = "";//viene svuotata la variabile stringa
         }
     }
 }

@@ -56,11 +56,12 @@ namespace WindowsFormsApp1
                 gameOver = true;
                 player.Image = Properties.Resources.dead;
                 GameTimer.Stop();
-                playtxt.Visible = true;
+                playtxt.Visible = true;mostraForm2.Visible = true;
                 if (Form2.statoAccesso == true)
                 {
                     if (score > Form2.punteggio)
                     {
+                        Form2.punteggio= score;
                         Form2.username_punteggi[Form2.nRigaPlayer, 1]=Convert.ToString(score);
                         sort();
                         save();
@@ -228,14 +229,18 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            playtxt.Left = this.ClientSize.Width / 2 - playtxt.Width / 2;
+            mostraForm2.Left = this.ClientSize.Width / 2 - mostraForm2.Width / 2;
             GameTimer.Stop();
             playtxt.Visible = true;
+            mostraForm2.Visible = true;
         }
 
         private void playtxt_Click(object sender, EventArgs e)
         {
             RestartGame();
             playtxt.Visible = false;
+            mostraForm2.Visible = false;
         }
 
         private void mostraForm2_Click(object sender, EventArgs e)
@@ -282,6 +287,11 @@ namespace WindowsFormsApp1
             ammoPic.BringToFront(); // bring it to front
             player.BringToFront(); // bring the player to front
 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
 
         private void RestartGame()
@@ -345,7 +355,7 @@ namespace WindowsFormsApp1
         }
         private void save()
         {
-            string save = "";//viene dichiarata la stringa per il salvataggio su file
+            string salvataggio = "";//viene dichiarata la stringa per il salvataggio su file
             string[,] arrayDiSalvataggio = new string[Form2.nRighe, 2];//viene dichiarato l'array di tipo string per la memorizzazione ordinata di ID e punteggi con i caratteri divisori
             for (int i = 0; i < Form2.nRighe; i++)                     //tramite i seguenti cicli for 
             {
@@ -366,17 +376,17 @@ namespace WindowsFormsApp1
             {
                 if (variabileDiControllo == 0)//il primo valore che deve essere salvato su file è il numero delle righe delfile 
                 {
-                    save = Convert.ToString(Form2.nRighe) + Form2.carattereDivisore;
+                    salvataggio = Convert.ToString(Form2.nRighe) + Form2.carattereDivisore;
                     variabileDiControllo = 1;
                 }
                 for (int j = 0; j < 2; j++)//vengono salvati gli ID e punteggi corrispondenti
                 {
-                    save = save + arrayDiSalvataggio[i, j];
+                    salvataggio = salvataggio + arrayDiSalvataggio[i, j];
                 }
                 //salvataggio = salvataggio + "\n";//dopo il salvataggio di un ID e punteggio il programma va a capo per salvare il successivo
             }
-            File.WriteAllText(@"C:\Users\Asus\Desktop\IDePunteggi", save);//viene salvato il tutto su file
-            save = "";//viene svuotata la variabile stringa
+            File.WriteAllText(@"C:\Users\Asus\Desktop\fileDinoShooter", salvataggio);//viene salvato il tutto su file
+            salvataggio = "";//viene svuotata la variabile stringa
         }
     }
 }

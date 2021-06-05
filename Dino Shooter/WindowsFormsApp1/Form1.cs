@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void MainTimerEvent(object sender, EventArgs e)
+        private void MainTimerEvent(object sender, EventArgs e)// timer che gestisce il gioco
         {
             if (playerHealth > 1)
             {
@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                gameOver = true;
+                gameOver = true;// se la salute è minore di 1 il gioco si ferma
                 player.Image = Properties.Resources.dead;
                 GameTimer.Stop();
                 playtxt.Visible = true;mostraForm2.Visible = true;
@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
             txtAmmo.Text = "Ammo" + ammo;
             txtScore.Text = "Kills" + score;
 
-            if (goLeft == true && player.Left > 0)
+            if (goLeft == true && player.Left > 0)//velocità player
             {
                 player.Left -= speed;
             }
@@ -91,13 +91,13 @@ namespace WindowsFormsApp1
            
             foreach(Control x in this.Controls)
             {
-                if (x is PictureBox && (string)x.Tag == "ammo")
+                if (x is PictureBox && (string)x.Tag == "ammo")//comando per raccogliere munizioni
                 {
                     if (player.Bounds.IntersectsWith(x.Bounds))
                     {
                         this.Controls.Remove(x);
                         ((PictureBox)x).Dispose();
-                        ammo += 10;
+                        ammo += 10; // aumenta il caricatore di 10 munizioni
                     }
                 }
 
@@ -105,10 +105,10 @@ namespace WindowsFormsApp1
                 {
                     if(player.Bounds.IntersectsWith(x.Bounds))
                     {
-                        playerHealth -= 1;
+                        playerHealth -= 1;//attacco dei dinosauri
                     }
 
-                    if (x.Left > player.Left)
+                    if (x.Left > player.Left)//movimento dinosauri
                     {
                         x.Left -= dinoSpeed;
                         ((PictureBox)x).Image = Properties.Resources.dino_1;
@@ -136,7 +136,7 @@ namespace WindowsFormsApp1
                 {
                     if (j is PictureBox && (string)j.Tag == "bullet" && x is PictureBox && (string)x.Tag == "dino")
                     {
-                        if (x.Bounds.IntersectsWith(j.Bounds))
+                        if (x.Bounds.IntersectsWith(j.Bounds))//uccisione dinosauri
                         {
                             score++;
 
@@ -144,7 +144,7 @@ namespace WindowsFormsApp1
                             ((PictureBox)j).Dispose();
                             this.Controls.Remove(x);
                             dinoList.Remove(((PictureBox)x));
-                            MakeDinos();
+                            MakeDinos();// crea un nuovo dinosauro quando ne viene eliminato 1
                         }
                     }
                 }
@@ -152,7 +152,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void KeyIsDown(object sender, KeyEventArgs e)
+        private void KeyIsDown(object sender, KeyEventArgs e)//funzioni pressione tasti
         {
 
             if( gameOver == true)
@@ -160,7 +160,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if (e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.Left)//movimento player
             {
                 goLeft = true;
                 facing = "left";
@@ -189,7 +189,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void KeyIsUp(object sender, KeyEventArgs e)
+        private void KeyIsUp(object sender, KeyEventArgs e)//funzione rilascio tasti
         {
             if (e.KeyCode == Keys.Left)
             {
@@ -216,9 +216,9 @@ namespace WindowsFormsApp1
                 ammo--;
                 ShootBullet(facing);
 
-                if (ammo < 1)
+                if (ammo < 1)//se le munizioni finiscono viene generato un caricatore nella mappa
                 {
-                   DropAmmo();
+                   DropAmmo();//funzione spawn caricatore
                 }
             }
         }
@@ -249,43 +249,43 @@ namespace WindowsFormsApp1
             this.Hide();
         }
 
-        private void ShootBullet(string direction)
+        private void ShootBullet(string direction)//funzione per sparare
           {
-            Bullet shootBullet = new Bullet();
-            shootBullet.direction = direction;
+            Bullet shootBullet = new Bullet();//crea il proiettile
+            shootBullet.direction = direction;//muove il proiettile in base alla posizione
             shootBullet.bulletLeft = player.Left + (player.Width / 2);
             shootBullet.bulletTop = player.Top + (player.Height / 2);
             shootBullet.makeBullet(this);
 
         }
 
-        private void MakeDinos()
+        private void MakeDinos()//funzione per generare dinosauri
         {
-            PictureBox dino = new PictureBox();
-            dino.BackColor = Color.Transparent;
-            dino.Image = Properties.Resources.dino_1_down;
+            PictureBox dino = new PictureBox();//immagine dinosauro
+            dino.BackColor = Color.Transparent;//toglie lo sfondo
+            dino.Image = Properties.Resources.dino_1_down;//sceglie immagine
             dino.Tag = "dino";
 
-            dino.Left = newRand.Next(0, 900);
-            dino.Top = newRand.Next(0, 800);
+            dino.Left = newRand.Next(0, 900);//genera un punto randomico dove spawnare il dinosauro
+            dino.Top = newRand.Next(0, 800);//genera un punto randomico dove spawnare il dinosauro
             dino.SizeMode = PictureBoxSizeMode.AutoSize;
             dinoList.Add(dino);
             this.Controls.Add(dino);
-            player.BringToFront();
+            player.BringToFront();//porta davanti il player
         }
 
-        private void DropAmmo()
+        private void DropAmmo()// funzione per generare un caricatore in un punto randomico della mappa 
         {
             PictureBox ammoPic = new PictureBox();
-            ammoPic.Image = Properties.Resources.ammo_Image; // assignment the ammo image to the picture box
-            ammoPic.SizeMode = PictureBoxSizeMode.AutoSize; // set the size to auto size
-            ammoPic.Left = newRand.Next(10, this.ClientSize.Width - ammoPic.Width); // set the location to a random left
-            ammoPic.Top = newRand.Next(50, this.ClientSize.Height - ammoPic.Height); // set the location to a random top
-            ammoPic.Tag = "ammo"; // set the tag to ammo
-            this.Controls.Add(ammoPic); // add the ammo picture box to the screen
+            ammoPic.Image = Properties.Resources.ammo_Image; // dare l'immagine ammo to the picture box
+            ammoPic.SizeMode = PictureBoxSizeMode.AutoSize; 
+            ammoPic.Left = newRand.Next(10, this.ClientSize.Width - ammoPic.Width); // poszione random
+            ammoPic.Top = newRand.Next(50, this.ClientSize.Height - ammoPic.Height); // poszione random
+            ammoPic.Tag = "ammo"; 
+            this.Controls.Add(ammoPic); // mettere immagine ammo sullo
 
-            ammoPic.BringToFront(); // bring it to front
-            player.BringToFront(); // bring the player to front
+            ammoPic.BringToFront(); // mettere davanti
+            player.BringToFront(); // mettere il player davanti
 
         }
 
@@ -294,13 +294,13 @@ namespace WindowsFormsApp1
             Environment.Exit(0);
         }
 
-        private void RestartGame()
+        private void RestartGame()// funzione per riiniziare la partita
         {
-            player.Image = Properties.Resources.shooter_assault_up;
+            player.Image = Properties.Resources.shooter_assault_up;//sceglie l'immagine
 
             foreach (PictureBox i in dinoList)
             {
-                this.Controls.Remove(i);
+                this.Controls.Remove(i);//rimuove tutti i dinosauri rimasti
             }
 
             dinoList.Clear();
@@ -310,17 +310,17 @@ namespace WindowsFormsApp1
                 MakeDinos();
             }
 
-            goUp = false;
-            goDown = false;
-            goLeft = false;
-            goRight = false;
+            goUp = false;//impedisce al giocatore di muoversi
+            goDown = false;//impedisce al giocatore di muoversi
+            goLeft = false;//impedisce al giocatore di muoversi
+            goRight = false;//impedisce al giocatore di muoversi
             gameOver = false;
 
-            playerHealth = 100;
-            score = 0;
-            ammo = 10;
+            playerHealth = 100;//ripristina la salute
+            score = 0;//azzera il numero di uccisioni
+            ammo = 10;//ripristina le munizioni
 
-            GameTimer.Start();
+            GameTimer.Start();//fa riiniziare la partita
         }
         private void sort()
         {
@@ -385,7 +385,7 @@ namespace WindowsFormsApp1
                 }
                 //salvataggio = salvataggio + "\n";//dopo il salvataggio di un ID e punteggio il programma va a capo per salvare il successivo
             }
-            File.WriteAllText(@"C:\Users\Asus\Desktop\fileDinoShooter", salvataggio);//viene salvato il tutto su file
+            File.WriteAllText(@"", salvataggio);//viene salvato il tutto su file
             salvataggio = "";//viene svuotata la variabile stringa
         }
     }
